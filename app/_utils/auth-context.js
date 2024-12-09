@@ -2,7 +2,7 @@
 
 import { useContext, createContext, useState, useEffect } from "react";
 import {
-  signInWithRedirect,
+  signInWithPopup,
   signOut,
   onAuthStateChanged,
   GithubAuthProvider,
@@ -18,7 +18,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const handleSignIn = async (provider) => {
     try {
-      const result = await signInWithRedirect(auth, provider);
+      const result = await signInWithPopup(auth, provider);
       console.log("User signed in successfully:", result.user);
     } catch (error) {
       if (error.code === "auth/account-exists-with-different-credential") {
